@@ -12,18 +12,25 @@ if not os.path.exists(dest_folder):
     os.makedirs(dest_folder)
 
 #loop through Pokedex
-for file in os.listdir(source_folder):
+for filename in os.listdir(source_folder):
+	# Udemy version
+	img = Image.open(f'{source_folder}{filename}')
+	clean_name = os.path.splitet(filename)[0]
+	img.save(f'{dest_folder}{clean_name}.png', 'png')
+	print('all done!')
+	# my version
+	'''
 	filename, extension = splitext(file)
 	try:
 		if (extension == ".jpg"):
 			sourcefile = os.path.join(source_folder, file)
 			destfile = os.path.join(dest_folder, filename)
-			print(sourcefile)
-			print(destfile)
+			print('input: ' + sourcefile)
+			print('output: ' + destfile)
 			im = Image.open(sourcefile).convert('RGB')
 			im.save(destfile + ".png")
 	except OSError:
 		print('Cannot covert %s' %file)
-
+	'''
 #convert images to png
 #save to the new folder
